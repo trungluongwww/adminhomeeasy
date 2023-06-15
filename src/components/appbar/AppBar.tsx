@@ -1,7 +1,12 @@
-import React, {useEffect, useRef, useState} from 'react';
-import {AppBar, Toolbar, Typography, Button, IconButton} from '@mui/material';
+import React, {useContext, useEffect, useRef, useState} from 'react';
+import {AppBar, Toolbar, Typography, Button, IconButton, Avatar} from '@mui/material';
 import {styled} from "@mui/system";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import {accountData} from "../../context/DataProvider";
+import {useNavigate} from "react-router-dom";
+
+
+
 const MainAppBar = styled(AppBar)({
     height: '50px',
     display: 'flex',
@@ -23,7 +28,8 @@ const Logo = styled('img')({
 const RightSection = styled('div')({
     display: 'flex',
     alignItems: 'center',
-    position: 'relative'
+    position: 'relative',
+    cursor:'pointer',
 })
 
 const Row = styled('div')({
@@ -38,7 +44,9 @@ const LogoutButton = styled(Button)({
     left: 0,
     marginTop: '10px',
     color:'black',
-    boxShadow: 'rgba(100, 100, 111, 0.4) 0px 7px 29px 0px'
+    boxShadow: 'rgba(100, 100, 111, 0.4) 0px 7px 29px 0px',
+    index:99,
+    backgroundColor:"white"
 })
 
 const IconButtonUser = styled(IconButton)({
@@ -47,26 +55,35 @@ const IconButtonUser = styled(IconButton)({
 })
 
 const Navbar = () => {
+    const { account, setAccount } = useContext(accountData);
+    const navigate = useNavigate()
     const [showLogoutButton, setShowLogoutButton] = useState(false);
     const handleUsernameClick = () => {
         setShowLogoutButton(!showLogoutButton);
     };
 
+    const onLogout = () =>{
+        setAccount({})
+        localStorage.removeItem('token')
+        navigate('/login')
+    }
+
     return (
         <MainAppBar>
             <Row>
-                <Logo src={'http://localhost:3000/logo512.png'} alt="Logo"/>
+                <Logo src={'http://localhost:3000/logo_main.png'} alt="Logo" style={{width:50,height:50}}/>
                 <Typography variant="h6">HOME EASY</Typography>
             </Row>
             <RightSection onClick={handleUsernameClick}>
+                <Avatar style={{height:30,width:30, marginRight:8}} src={account.avatar}/>
                 <Typography variant="subtitle1" >
-                    Tên Người Dùng
+                    {account.name}
                 </Typography>
                 <IconButtonUser >
                     <ExpandMoreIcon style={{color:'white'}} />
                 </IconButtonUser>
                 {showLogoutButton && (
-                        <LogoutButton color="inherit">
+                        <LogoutButton color="inherit" onClick={onLogout}>
                             Đăng xuất
                         </LogoutButton>
                 )}

@@ -50,7 +50,7 @@ const LeftBar = () => {
     return (
         <MyComponent>
             <List>
-                <ListItemButton component={Link} to={'/dashboard'} style={{position: 'relative'}}
+                <ListItemButton component={Link} to={'/'} style={{position: 'relative'}}
                                 onClick={() => handleItemClick(ItemLeftBar.DashBoard)}>
                     <ListItemIcon style={{color: selectedItem == ItemLeftBar.DashBoard ? 'white' : '#ffffffa6'}}>
                         <DashboardIcon/>
@@ -62,7 +62,7 @@ const LeftBar = () => {
                             style={{color: 'white'}}/>}
                     </div>
                 </ListItemButton>
-                <ListItemButton component={Link} to={'/users'} style={{position: 'relative'}}
+                <ListItemButton component={Link} to={'/convenience'} style={{position: 'relative'}}
                                 onClick={() => handleItemClick(ItemLeftBar.Convenience)}>
                     <ListItemIcon style={{color: selectedItem == ItemLeftBar.Convenience ? 'white' : '#ffffffa6'}}>
                         <LocalConvenienceStoreIcon/>
@@ -73,7 +73,7 @@ const LeftBar = () => {
                         {selectedItem == ItemLeftBar.Convenience && <KeyboardArrowRightIcon style={{color: 'white'}}/>}
                     </div>
                 </ListItemButton>
-                <ListItemButton component={Link} to={'/products'} style={{position: 'relative'}}
+                <ListItemButton component={Link} to={'/room'} style={{position: 'relative'}}
                                 onClick={() => handleItemClick(ItemLeftBar.Room)}>
                     <ListItemIcon style={{color: selectedItem == ItemLeftBar.Room ? 'white' : '#ffffffa6'}}>
                         <HouseIcon/>
