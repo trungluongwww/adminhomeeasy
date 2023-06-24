@@ -19,6 +19,7 @@ import service from "../../service";
 import {IConvenienceUpdatePayload} from "../../interface/request";
 import {toast} from "react-toastify";
 import AppToast from "../../utils/AppToast";
+import DateTimeUtils from "../../utils/DateTimeUtils";
 
 const font = {
     fontSize: '16px',
@@ -110,8 +111,8 @@ export default function ({convenience, refresh}: {convenience:IConvenienceRespon
             </TableCell>
             <TableCell sx={font} align="center">{convenience.name}</TableCell>
             <TableCell sx={font} align="center">{convenience.code}</TableCell>
-            <TableCell sx={font} align="center">{convenience.createdAt.toString()}</TableCell>
-            <TableCell sx={font} align="center">{convenience.updatedAt.toString()}</TableCell>
+            <TableCell sx={font} align="center">{DateTimeUtils.formatDate(convenience.createdAt)}</TableCell>
+            <TableCell sx={font} align="center">{DateTimeUtils.formatDate(convenience.updatedAt)}</TableCell>
             <TableCell sx={font} align="center"><StyledEdit  onClick={handleOpen}/></TableCell>
             <Modal
                 keepMounted

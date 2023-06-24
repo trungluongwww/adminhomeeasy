@@ -72,7 +72,7 @@ const Navbar = () => {
         <MainAppBar>
             <Row>
                 <Logo src={'http://localhost:3000/logo_main.png'} alt="Logo" style={{width:50,height:50}}/>
-                <Typography variant="h6">HOME EASY</Typography>
+                <Typography variant="h6">COZY STAY</Typography>
             </Row>
             <RightSection onClick={handleUsernameClick}>
                 <Avatar style={{height:30,width:30, marginRight:8}} src={account.avatar}/>

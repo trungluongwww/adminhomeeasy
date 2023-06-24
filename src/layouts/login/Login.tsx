@@ -29,10 +29,11 @@ const Login = (props: IProps) => {
                 const token = localStorage.getItem('token')
                 if (!token) return;
                 const res = await service.auth.profile();
+                console.log("123",res)
                 if (res.status.toString().startsWith('2')) {
                     props.setLogin(true)
                     setAccount(res.data.data)
-                    navigate('/');
+                    return navigate(-1);
                 }
             } catch (e) {
             }
@@ -54,17 +55,13 @@ const Login = (props: IProps) => {
         try {
             const res = await service.auth.login({email: loginInput.username, password: loginInput.password})
             console.log(res)
-            if (res.status.toString().startsWith('2') && res.data.token) {
+            if (res.status.toString().startsWith('2') && res.data.data.token) {
                 localStorage.setItem('token', res.data.data.token)
                 props.setLogin(true);
                 setIsLogged(true)
-                console.log("passs")
             } else {
                 setError(res.data.message)
-                console.log("err")
-
             }
-
         } catch (error) {
             setError('something is wrong');
         }

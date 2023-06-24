@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
 import {
     Typography,
@@ -15,8 +15,8 @@ import HouseIcon from '@mui/icons-material/House';
 import {styled} from '@mui/system';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import LocalConvenienceStoreIcon from '@mui/icons-material/LocalConvenienceStore';
-import {Link} from "react-router-dom";
-
+import {Link, useLocation} from "react-router-dom";
+import PersonIcon from '@mui/icons-material/Person';
 const MyComponent = styled('div')({
     marginTop: 50,
     backgroundColor: '#212121',
@@ -38,6 +38,7 @@ enum ItemLeftBar {
     DashBoard,
     Convenience,
     Room,
+    User
 
 }
 
@@ -47,6 +48,28 @@ const LeftBar = () => {
     const handleItemClick = (item: ItemLeftBar) => {
         setSelectedItem(item);
     };
+
+    const location = useLocation()
+
+    useEffect(() => {
+        const currentPath = window.location.pathname;
+
+        if (currentPath.startsWith('/convenience') ){
+            setSelectedItem(ItemLeftBar.Convenience)
+        }else if(currentPath.startsWith('/room')){
+            setSelectedItem(ItemLeftBar.Room)
+        }else if(currentPath.startsWith('/user')){
+            setSelectedItem(ItemLeftBar.User)
+        }else if(currentPath.startsWith('/')){
+            console.log("dashboard")
+            setSelectedItem(ItemLeftBar.DashBoard)
+        }
+
+
+
+
+    }, [location]);
+
     return (
         <MyComponent>
             <List>
@@ -71,6 +94,17 @@ const LeftBar = () => {
                                   style={{color: selectedItem == ItemLeftBar.Convenience ? 'white' : '#ffffffa6'}}/>
                     <div style={{position: 'absolute', right: 8}}>
                         {selectedItem == ItemLeftBar.Convenience && <KeyboardArrowRightIcon style={{color: 'white'}}/>}
+                    </div>
+                </ListItemButton>
+                <ListItemButton component={Link} to={'/user'} style={{position: 'relative'}}
+                                onClick={() => handleItemClick(ItemLeftBar.User)}>
+                    <ListItemIcon style={{color: selectedItem == ItemLeftBar.User ? 'white' : '#ffffffa6'}}>
+                        <PersonIcon/>
+                    </ListItemIcon>
+                    <ListItemText primary="Người dùng"
+                                  style={{color: selectedItem == ItemLeftBar.User ? 'white' : '#ffffffa6'}}/>
+                    <div style={{position: 'absolute', right: 8}}>
+                        {selectedItem == ItemLeftBar.User && <KeyboardArrowRightIcon style={{color: 'white'}}/>}
                     </div>
                 </ListItemButton>
                 <ListItemButton component={Link} to={'/room'} style={{position: 'relative'}}
