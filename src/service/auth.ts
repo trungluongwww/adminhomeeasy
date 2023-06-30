@@ -4,10 +4,10 @@ import {ILoginPayload} from "../interface/request";
 
 export default {
     login : async (data:ILoginPayload) =>{
-        return await axiosClient.post(`/users/login`,data)
+        return await axiosClient.post(`/auth/login`,data)
     },
     profile: async ()=>{
-        return await axiosClient.get(`/users/me`)
+        return await axiosClient.get(`/auth/me`)
     }
 }
 

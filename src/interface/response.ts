@@ -54,6 +54,12 @@ interface IUserResponse {
     ward?: IWardResponse;
 }
 
+interface IUserAllResponse {
+    users: Array<IUserResponse>;
+    total: number;
+}
+
+
 // convenience
 interface IConvenienceAllResponse {
     conveniences: Array<IConvenienceResponse>;
@@ -68,6 +74,61 @@ interface IConvenienceResponse {
     updatedAt: Date;
 }
 
+// common
+interface ICommonKeyValue {
+    key: string;
+    value: string;
+    option?: string;
+    isDefault?: boolean;
+}
+
+// Room
+interface IRoomResponse {
+    id: string;
+    name: string;
+    owner: IUserResponse;
+    description: string;
+    rentPerMonth: number;
+    deposit: number;
+    squareMetre: number;
+    province: IProvinceResponse;
+    district: IDistrictResponse;
+    ward: IWardResponse;
+    address: string;
+    status: ICommonKeyValue;
+    type: ICommonKeyValue;
+    createdAt: Date;
+    updatedAt: Date;
+    files: Array<IRoomFileResponse>;
+
+    conveniences: Array<IConvenienceResponse>;
+}
+
+interface IRoomFileResponse {
+    id: string;
+    info: IUploadSingleFileResponse;
+    createdAt: Date;
+}
+
+interface IUploadSingleFileResponse {
+    name: string;
+    originName: string;
+    width: number;
+    height: number;
+    type: string;
+    url: string;
+    thumbnail?: IUploadThumbnailResponse;
+}
+
+interface IUploadThumbnailResponse {
+    name: string;
+    originName: string;
+    width: number;
+    height: number;
+    url: string;
+}
+
+
 export type {
     // location
     IProvinceResponse,
@@ -79,8 +140,12 @@ export type {
 
     // user
     IUserResponse,
+    IUserAllResponse,
 
     // convenience
     IConvenienceAllResponse,
     IConvenienceResponse,
+
+    // room
+    IRoomResponse,
 }

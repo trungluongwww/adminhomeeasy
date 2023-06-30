@@ -17,6 +17,7 @@ import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import LocalConvenienceStoreIcon from '@mui/icons-material/LocalConvenienceStore';
 import {Link, useLocation} from "react-router-dom";
 import PersonIcon from '@mui/icons-material/Person';
+import NightShelterIcon from '@mui/icons-material/NightShelter';
 const MyComponent = styled('div')({
     marginTop: 50,
     backgroundColor: '#212121',
@@ -88,7 +89,7 @@ const LeftBar = () => {
                 <ListItemButton component={Link} to={'/convenience'} style={{position: 'relative'}}
                                 onClick={() => handleItemClick(ItemLeftBar.Convenience)}>
                     <ListItemIcon style={{color: selectedItem == ItemLeftBar.Convenience ? 'white' : '#ffffffa6'}}>
-                        <LocalConvenienceStoreIcon/>
+                        <NightShelterIcon/>
                     </ListItemIcon>
                     <ListItemText primary="Thiết lặp nội thất"
                                   style={{color: selectedItem == ItemLeftBar.Convenience ? 'white' : '#ffffffa6'}}/>

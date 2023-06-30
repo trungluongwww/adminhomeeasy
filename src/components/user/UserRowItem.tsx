@@ -51,7 +51,7 @@ const UserRowItem = ({user}:UserRowParams ) =>{
         <StyledTableRow>
             <TableCell style={fontValue}><ContentCopyIcon sx={copyIconStyle}/></TableCell>
             <TableCell style={ avatarCell}>
-                <Avatar style={avatar} />
+                <Avatar style={avatar} src={user.avatar}/>
                 <Typography style={fontValue}>{user.name}</Typography>
             </TableCell>
             <TableCell  style={fontValue}>{user.phone}</TableCell>

@@ -17,11 +17,22 @@ interface IConvenienceUpdatePayload {
     order: number;
 }
 
+interface IUserAllQuery {
+    page: number;
+    provinceId: string;
+    wardId: string;
+    districtId: string;
+    searchText: string;
+}
+
 export type {
     //auth
     ILoginPayload,
 
     // convenience
     IConvenienceCreatePayload,
-    IConvenienceUpdatePayload
+    IConvenienceUpdatePayload,
+
+    // user
+    IUserAllQuery,
 }
