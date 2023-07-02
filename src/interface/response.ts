@@ -104,6 +104,19 @@ interface IRoomResponse {
     conveniences: Array<IConvenienceResponse>;
 }
 
+interface IRoomAllQuery {
+    provinceId: string;
+    districtId: string;
+    wardId: string;
+    limit: number;
+    page: number;
+    keyword: string;
+    orderField: string;
+    orderValue: "ASC" | "DESC";
+    type: string;
+    maxPrice: number;
+}
+
 interface IRoomFileResponse {
     id: string;
     info: IUploadSingleFileResponse;
@@ -128,6 +141,45 @@ interface IUploadThumbnailResponse {
     url: string;
 }
 
+interface IRoomAllResponse {
+    rooms: Array<IRoomResponse>;
+    total: number;
+    pageToken: string;
+}
+
+interface ICommonUpsertResponse {
+    data:any
+    message:string
+}
+
+interface IRoomDetailResponse {
+    room: IRoomResponse;
+}
+
+
+interface IStatisticCommonTodayResponse {
+    totalRegister: number;
+    totalAccess: number;
+    totalMessage: number;
+    totalRoomCreated: number;
+    totalConversationCreated: number;
+    totalRoomFavorites: number;
+}
+
+interface IStatisticRoomResponse {
+    total: number;
+    totalActive: number;
+    totalInactive: number;
+    totalBanned: number;
+    totalPostToday: number;
+}
+
+interface IStatisticUserResponse {
+    total: number;
+    totalSeeker: number;
+    totalLessor: number;
+    totalRegisterToday: number;
+}
 
 export type {
     // location
@@ -148,4 +200,13 @@ export type {
 
     // room
     IRoomResponse,
+    IRoomAllQuery,
+    IRoomAllResponse,
+    ICommonUpsertResponse,
+    IRoomDetailResponse,
+
+    // statistic
+    IStatisticCommonTodayResponse,
+    IStatisticRoomResponse,
+    IStatisticUserResponse,
 }

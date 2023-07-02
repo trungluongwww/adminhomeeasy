@@ -1,8 +1,8 @@
 import {
     Avatar,
-    Box, FormControl,
+    Box, Button, FormControl,
     Grid, IconButton,
-    InputBase, InputLabel, MenuItem, OutlinedInput,
+    InputBase, InputLabel, MenuItem, OutlinedInput, Pagination,
     Paper, Select,
     Table,
     TableBody,
@@ -18,6 +18,7 @@ import {Search} from "@mui/icons-material";
 import {useEffect, useState} from "react";
 import service from "../../service";
 import AppToast from "../../utils/AppToast";
+import {IUserAllQuery} from "../../interface/request";
 
 const componentStyle = {
     padding: 24,
@@ -88,7 +89,8 @@ function getStyles(name: string, personName: string[], theme: Theme) {
 
 const User = () => {
     const [users, setUsers] = useState<Array<IUserResponse>>([])
-    const [pageToken, setPageToken] = useState<string>("")
+    const [page, setPage] = useState<number>(0)
+    const [total, setTotal] = useState<number>(0)
 
     const [provinces, setProvinces] = useState<Array<IProvinceResponse>>([])
     const [districts, setDistricts] = useState<Array<IDistrictResponse>>([])
@@ -121,8 +123,24 @@ const User = () => {
         setWard(res.wards)
     }
 
+    const fetchUser = async () => {
+        const res = await service.user.allUser({
+            page: page,
+            provinceId: selectedProvince,
+            districtId: selectedDistrict,
+            wardId: selectedWard,
+        } as IUserAllQuery)
+        if (res instanceof Error) {
+            return AppToast({message: res.message, isSuccess: false})
+        }
+
+        setTotal(res.total)
+        setUsers(res.users)
+    }
+
     useEffect(() => {
         fetchProvinces().then()
+        fetchUser().then()
     }, [])
 
 
@@ -152,7 +170,7 @@ const User = () => {
         <div>
             <Box style={componentStyle}>
                 <Grid container spacing={4}>
-                    <Grid item xs={12} sm={2} md={2} style={{margin: '0px auto',backgroundColor: 'white',}}>
+                    <Grid item xs={12} sm={2} md={2} style={{margin: '0px auto', backgroundColor: 'white',}}>
                         <div style={{position: 'fixed'}}>
                             <Box style={SelectStyle}>
                                 <Typography variant={'h6'}> Tìm kiếm</Typography>
@@ -167,7 +185,7 @@ const User = () => {
                                     </IconButton>
                                 </Paper>
                             </Box>
-                            <Box >
+                            <Box>
                                 <Grid spacing={2}>
                                     <FormControl sx={{maxWidth: '100%', width: "100%", marginTop: 4}}>
                                         <InputLabel id="demo-single-name-label">Thành phố</InputLabel>
@@ -223,6 +241,9 @@ const User = () => {
                                             ))}
                                         </Select>
                                     </FormControl>
+                                    <Button style={{marginTop:4}} onClick={()=>{
+                                        fetchUser().then()
+                                    }} variant={"contained"} >Lọc</Button>
                                 </Grid>
                             </Box>
                         </div>
@@ -246,6 +267,9 @@ const User = () => {
                                 </TableBody>
                             </Table>
                         </Paper>
+                        <div style={{marginTop:12, display:"flex", justifyContent:"center", alignItems:"center"}}>
+                            <Pagination count={Math.floor(total/20)+1} color="primary"/>
+                        </div>
                     </Grid>
                 </Grid>
             </Box>

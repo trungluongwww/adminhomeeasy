@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {Box, Grid, Paper, Typography} from '@mui/material';
 import {styled} from "@mui/system";
 import {AddComment, Person} from "@mui/icons-material";
@@ -11,6 +11,9 @@ import CardStatistic from "../../components/dashboard/CardStatistic";
 import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 import RoomStatistic from "../../components/dashboard/RoomStatistic";
 import UserStatistic from "../../components/dashboard/UserStatistic";
+import {IStatisticCommonTodayResponse, IStatisticUserResponse} from "../../interface/response";
+import service from "../../service";
+import AppToast from "../../utils/AppToast";
 
 const IConStatisticStyle = {
     flex: '0 0 25%',
@@ -26,7 +29,20 @@ const TitleStyle = styled(Typography)({
 })
 
 const Dashboard = () => {
-    const navigate = useNavigate()
+    const [data,setData] = useState<IStatisticCommonTodayResponse>({} as IStatisticCommonTodayResponse)
+
+    const fetchData = async ()=>{
+        const res = await service.statistic.getCommon()
+
+        if(res instanceof Error) {
+            return AppToast({message:res.message,isSuccess:false})
+        }
+
+        setData(res)
+    }
+    useEffect(()=>{
+        fetchData().then()
+    },[])
     return (
         <div>
             <div style={{
@@ -41,15 +57,15 @@ const Dashboard = () => {
                 <Grid container spacing={2} style={{boxSizing: 'border-box', marginLeft: 24, marginRight: 24}}>
                     <Grid item xs={12}>
                         <Grid container spacing={2}>
-                            <CardStatistic title={"Lượt truy cập"} count={265}
+                            <CardStatistic title={"Lượt truy cập"} count={data.totalAccess}
                                            Icon={<LoginIcon sx={IConStatisticStyle}/>}/>
-                            <CardStatistic title={"Đăng ký tài khoản"} count={35}
+                            <CardStatistic title={"Đăng ký tài khoản"} count={data.totalRegister}
                                            Icon={<PersonAddAltIcon sx={IConStatisticStyle}/>}/>
-                            <CardStatistic title={"Phòng mới tạo"} count={26}
+                            <CardStatistic title={"Phòng mới tạo"} count={data.totalRoomCreated}
                                            Icon={<AddCircleOutlineIcon sx={IConStatisticStyle}/>}/>
-                            <CardStatistic title={"Cuộc trò chuyện mới"} count={43}
+                            <CardStatistic title={"Cuộc trò chuyện mới"} count={data.totalConversationCreated}
                                            Icon={<AddComment sx={IConStatisticStyle}/>}/>
-                            <CardStatistic title={"Tin nhắn mới"} count={2335}
+                            <CardStatistic title={"Tin nhắn mới"} count={data.totalMessage}
                                            Icon={<MessageIcon sx={IConStatisticStyle}/>}/>
 
                         </Grid>

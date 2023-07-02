@@ -1,6 +1,10 @@
 import {Box, Grid, LinearProgress, Typography} from "@mui/material";
 import {blue, grey} from "@mui/material/colors";
 import {styled} from "@mui/system";
+import {useEffect, useState} from "react";
+import {IStatisticRoomResponse} from "../../interface/response";
+import service from "../../service";
+import AppToast from "../../utils/AppToast";
 
 const ComponentStyle = {
     padding: 12,
@@ -40,6 +44,21 @@ const ValueStyle = {
 }
 
 const RoomStatistic = () => {
+    const [data,setData] = useState<IStatisticRoomResponse>({total:0,totalActive:0,totalBanned:0,totalInactive:0,totalPostToday:0})
+
+    const fetchData = async ()=>{
+        const res = await service.statistic.getRoom()
+
+        if(res instanceof Error) {
+            return AppToast({message:res.message,isSuccess:false})
+        }
+
+        setData(res)
+    }
+    useEffect(()=>{
+        fetchData().then()
+    },[])
+
     return (
         <Box style={ComponentStyle}>
             <Grid container>
@@ -49,20 +68,20 @@ const RoomStatistic = () => {
                 <Grid item xs={6} sm={6} md={6} style={leftContentStyle}>
                     <div>
                         <Typography variant="h6">Tổng số phòng</Typography>
-                        <Typography variant="h4" style={ValueStyle}>150</Typography>
+                        <Typography variant="h4" style={ValueStyle}>{data.total}</Typography>
                     </div>
                     <div>
                         <Typography variant="h6">Số phòng hoạt động</Typography>
-                        <Typography variant="h4" style={ValueStyle}>92</Typography>
+                        <Typography variant="h4" style={ValueStyle}>{data.totalActive}</Typography>
                     </div>
                     <div>
                         <Typography variant="h6">Số phòng không hoạt động</Typography>
-                        <Typography variant="h4" style={ValueStyle}>58</Typography>
+                        <Typography variant="h4" style={ValueStyle}>{data.totalInactive}</Typography>
                     </div>
                 </Grid>
                 <Grid item xs={6} sm={6} md={6} justifyContent="center" alignItems={'center'} height={'100%'}>
-                        <Typography variant="h6">Tỉ lệ phòng mới hôm nay: +{30}%</Typography>
-                        <LinearProgress variant="determinate" value={30} style={{height:12}} />
+                        <Typography variant="h6">Tỉ lệ phòng mới hôm nay: +{(data.totalPostToday/data.total * 100).toFixed(2)}%</Typography>
+                        <LinearProgress variant="determinate" value={(data.totalPostToday/data.total * 100)} style={{height:12}} />
                 </Grid>
             </Grid>
         </Box>

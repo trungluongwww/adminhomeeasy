@@ -11,6 +11,9 @@ const convenienceCode = [
         "beekeeper",
         "clock",
         "wifi",
+        "air_filter",
+        "sofa_single",
+        "desk"
     ]
 
 export default {

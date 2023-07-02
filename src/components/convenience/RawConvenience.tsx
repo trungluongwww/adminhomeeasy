@@ -86,22 +86,24 @@ export default function ({convenience, refresh}: {convenience:IConvenienceRespon
         setCode(event.target.value as string);
     };
 
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-            service.convenience.update(convenience.id,{
-                code:code,
-                order:order,
-                name:name,
-            } as IConvenienceUpdatePayload).then((val)=>{
-                if (val.status.toString().startsWith('2')){
-                    refresh();
-                    handleClose();
-                    return AppToast({message:null,isSuccess:true})
-                }
-            }).catch((e)=>{
-                setCode(convenience.code)
-                return AppToast({message:e.response.data.message,isSuccess:false})
-            })
+
+        const res = await service.convenience.update(convenience.id,{
+            code:code,
+            order:order,
+            name:name,
+        } as IConvenienceUpdatePayload)
+
+        if (res instanceof  Error){
+            setCode(convenience.code)
+            return AppToast({message:res.message, isSuccess:false})
+        }else{
+            refresh();
+            handleClose();
+            return AppToast({message:res.message, isSuccess:true})
+        }
+
     };
 
     return (
