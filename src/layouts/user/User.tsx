@@ -149,29 +149,32 @@ const User = () => {
     const [selectedWard, setSelectedWard] = useState("");
 
     const handleProvinceChange = (event: any) => {
-        if (event.target.value) {
+        if(!event.target.value){
+
+            setSelectedProvince("")
+            setSelectedDistrict("")
+            setSelectedWard('')
+            return
+        }
             setWard([])
             setSelectedProvince(event.target.value);
             fetchDistricts(event.target.value).then();
-        }
     };
     const handleDistrictChange = (event: any) => {
-        if (event.target.value) {
             setSelectedDistrict(event.target.value);
             fetchWards(event.target.value).then();
-        }
+
     };
     const handleWardChange = (event: any) => {
-        if (event.target.value) {
             setSelectedWard(event.target.value);
-        }
+
     };
     return (
         <div>
             <Box style={componentStyle}>
                 <Grid container spacing={4}>
                     <Grid item xs={12} sm={2} md={2} style={{margin: '0px auto', backgroundColor: 'white',}}>
-                        <div style={{position: 'fixed'}}>
+                        <div style={{position: 'fixed',width:'10%'}}>
                             <Box style={SelectStyle}>
                                 <Typography variant={'h6'}> Tìm kiếm</Typography>
                                 <Paper style={searchComponent}>
