@@ -189,7 +189,7 @@ const User = () => {
                                 </Paper>
                             </Box>
                             <Box>
-                                <Grid spacing={2}>
+                                <Grid >
                                     <FormControl sx={{maxWidth: '100%', width: "100%", marginTop: 4}}>
                                         <InputLabel id="demo-single-name-label">Thành phố</InputLabel>
                                         <Select

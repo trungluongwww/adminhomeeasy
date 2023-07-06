@@ -71,7 +71,7 @@ const Navbar = () => {
     return (
         <MainAppBar>
             <Row>
-                <Logo src={'http://localhost:3000/logo_main.png'} alt="Logo" style={{width:50,height:50}}/>
+                <Logo src={`/logo_main.png`} alt="Logo" style={{width:50,height:50}}/>
                 <Typography variant="h6">COZY STAY</Typography>
             </Row>
             <RightSection onClick={handleUsernameClick}>

@@ -23,9 +23,10 @@ const font = {
 interface ITableRoomParameters {
     rooms : Array<IRoomResponse>
     total: number
+    refresh:Function
 }
 
-const TableRoom = ({rooms,total}:ITableRoomParameters)=>{
+const TableRoom = ({rooms,refresh,total}:ITableRoomParameters)=>{
     return (
         <Box style={{padding:'0px 12px', maxWidth:'95%',boxSizing:'border-box'}}>
         <TableContainerStyle>
@@ -46,7 +47,7 @@ const TableRoom = ({rooms,total}:ITableRoomParameters)=>{
                 <TableBody>
                     {
                         rooms.map((r,i)=>{
-                            return <RowTableRoom room={r} index={i}/>
+                            return <RowTableRoom refresh={refresh} room={r} index={i}/>
                         })
                     }
                 </TableBody>

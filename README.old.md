@@ -1,2 +1,0 @@
-# capstoneWebAdmin
-University Capstone project

@@ -74,7 +74,7 @@ const Login = (props: IProps) => {
                     <Grid item lg={12} sm={12} xs={12}>
                         <div className="banner">
                             <img
-                                src="http://localhost:3000/logo_main.png"
+                                src={`/logo_main.png`}
                                 className="banner-sign"
                                 alt="blog"
                             />
