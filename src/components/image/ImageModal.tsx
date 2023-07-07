@@ -37,13 +37,13 @@ const ImageModal = ({ imageUrl }:{imageUrl:string}) => {
         <div>
             <img
                 src={imageUrl}
-                alt="Image"
+                alt="Hinh anh chi tiet"
                 style={thumbnail}
                 onClick={handleOpen}
             />
             <Modal open={open} onClose={handleClose}>
                 <div style={modalContent}>
-                    <img src={imageUrl} alt="Image" style={fullSize} />
+                    <img src={imageUrl} alt="Hinh anh chi tiet" style={fullSize} />
                 </div>
             </Modal>
         </div>

@@ -2,7 +2,7 @@ import {ILocationAllDistrict, ILocationAllProvince, ILocationAllWard} from "../i
 import axiosClient from "./axios";
 
 
-export default {
+const location =  {
     getProvinces: async ():Promise<ILocationAllProvince|Error>=>{
         try{
             const res = await axiosClient.get("/locations/provinces")
@@ -32,3 +32,5 @@ export default {
         }
     },
 }
+
+export default location;

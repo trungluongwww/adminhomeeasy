@@ -3,7 +3,7 @@ import axiosClient from "./axios";
 import {ICommonUpsertResponse, IConvenienceAllResponse} from "../interface/response";
 
 
-export default {
+const convenience = {
     getAll: async ():Promise<IConvenienceAllResponse|Error> => {
         try {
             const res = await axiosClient.get('/conveniences')
@@ -29,3 +29,5 @@ export default {
         }
     }
 }
+
+export default convenience;

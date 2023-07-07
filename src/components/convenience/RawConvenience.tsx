@@ -58,7 +58,7 @@ const style = {
     p: 4,
 };
 
-export default function ({convenience, refresh}: {convenience:IConvenienceResponse,refresh:Function}) {
+const RawConvenience = ({convenience, refresh}: {convenience:IConvenienceResponse,refresh:Function})=> {
 
 
     const [open, setOpen] = React.useState(false);
@@ -159,3 +159,5 @@ export default function ({convenience, refresh}: {convenience:IConvenienceRespon
         </StyledTableRow>
     )
 }
+
+export default RawConvenience

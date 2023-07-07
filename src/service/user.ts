@@ -1,7 +1,8 @@
 import { IUserAllQuery} from "../interface/request";
 import axiosClient from "./axios";
 import {IUserAllResponse} from "../interface/response";
-export default {
+
+const user =  {
     allUser : async (query:IUserAllQuery):Promise<IUserAllResponse|Error> =>{
         try{
             const res = await axiosClient.get("/users",{params:query})
@@ -12,3 +13,5 @@ export default {
         }
     },
 }
+
+export default user;

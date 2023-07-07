@@ -1,6 +1,8 @@
 
 import Value from "./value"
 
-export default {
+const constant =  {
     Value,
 }
+
+export default constant;

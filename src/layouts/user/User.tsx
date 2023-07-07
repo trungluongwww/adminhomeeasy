@@ -7,7 +7,7 @@ import {
     TableBody,
     TableCell,
     TableHead,
-    TableRow, Theme,
+    TableRow,
     Typography
 } from "@mui/material";
 import {IDistrictResponse, IProvinceResponse, IUserResponse, IWardResponse} from "../../interface/response";
@@ -63,7 +63,6 @@ const SelectStyle = {
 
 const User = () => {
     const [users, setUsers] = useState<Array<IUserResponse>>([])
-    const [page, setPage] = useState<number>(0)
     const [total, setTotal] = useState<number>(0)
 
     const [provinces, setProvinces] = useState<Array<IProvinceResponse>>([])
@@ -97,7 +96,7 @@ const User = () => {
         setWard(res.wards)
     }
 
-    const fetchUser = async () => {
+    const fetchUser = async (page:number) => {
         const res = await service.user.allUser({
             page: page,
             provinceId: selectedProvince,
@@ -114,7 +113,7 @@ const User = () => {
 
     useEffect(() => {
         fetchProvinces().then()
-        fetchUser().then()
+        fetchUser(0).then()
     }, [])
 
 
@@ -219,7 +218,7 @@ const User = () => {
                                         </Select>
                                     </FormControl>
                                     <Button style={{marginTop:4}} onClick={()=>{
-                                        fetchUser().then()
+                                        fetchUser(0).then()
                                     }} variant={"contained"} >Lọc</Button>
                                 </Grid>
                             </Box>

@@ -52,8 +52,10 @@ const roomTypeObjects = [
         isDefault: false,
     },
 ]
-export default {
+const value = {
     convenienceCode,
     roomStatus,
     roomTypeObjects,
 }
+
+export default value;

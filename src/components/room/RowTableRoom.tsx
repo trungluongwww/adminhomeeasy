@@ -85,7 +85,7 @@ const RowTableRoom = ({room, index, refresh}: IRowTableParams) => {
             <TableCell sx={font} align={'center'} component="th" scope="row">
                 {index}
             </TableCell>
-            <TableCell><img src={room.files[0]?.info?.url} style={{width: '55px', height: '55px'}}/></TableCell>
+            <TableCell><img src={room.files[0]?.info?.url} alt={"Hinh anh dai dien room"} style={{width: '55px', height: '55px'}}/></TableCell>
             <TableCell sx={font} align="center">{room.name}</TableCell>
             <TableCell sx={font} align="center">{room.type?.value || ""}</TableCell>
             <TableCell sx={font} align="center">{room.status.value || ""}</TableCell>

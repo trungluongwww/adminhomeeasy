@@ -7,6 +7,8 @@ function formatDate(createdAt:Date) {
 }
 
 
-export default {
+const DateTimeUtils = {
     formatDate,
 }
+
+export default DateTimeUtils;
