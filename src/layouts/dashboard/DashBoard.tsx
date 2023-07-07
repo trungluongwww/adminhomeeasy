@@ -1,9 +1,8 @@
 import React, {useEffect, useState} from "react";
-import {Box, Grid, Paper, Typography} from '@mui/material';
+import {Box, Grid, Typography} from '@mui/material';
 import {styled} from "@mui/system";
-import {AddComment, Person} from "@mui/icons-material";
-import {useNavigate} from "react-router-dom";
-import {blueGrey, green, grey} from "@mui/material/colors";
+import {AddComment, } from "@mui/icons-material";
+import { grey} from "@mui/material/colors";
 import LoginIcon from '@mui/icons-material/Login';
 import MessageIcon from '@mui/icons-material/Message';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
@@ -11,7 +10,7 @@ import CardStatistic from "../../components/dashboard/CardStatistic";
 import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 import RoomStatistic from "../../components/dashboard/RoomStatistic";
 import UserStatistic from "../../components/dashboard/UserStatistic";
-import {IStatisticCommonTodayResponse, IStatisticUserResponse} from "../../interface/response";
+import {IStatisticCommonTodayResponse} from "../../interface/response";
 import service from "../../service";
 import AppToast from "../../utils/AppToast";
 

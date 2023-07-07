@@ -1,12 +1,12 @@
 import axiosClient from "./axios";
 import {
-    IRoomAllQuery, IRoomResponse, IUserAllResponse, IRoomAllResponse,
+    IRoomAllQuery, IRoomAllResponse,
     ICommonUpsertResponse,
     IRoomDetailResponse,
 } from "../interface/response";
 
 
-export default {
+const room = {
     getAll: async (params: IRoomAllQuery): Promise<IRoomAllResponse | Error> => {
         try {
 
@@ -38,3 +38,5 @@ export default {
         }
     }
 }
+
+export default room;

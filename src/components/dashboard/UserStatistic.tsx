@@ -1,7 +1,7 @@
 import {blue, grey} from "@mui/material/colors";
 import {Box, Grid, LinearProgress, Typography} from "@mui/material";
 import {useEffect, useState} from "react";
-import {IStatisticRoomResponse, IStatisticUserResponse} from "../../interface/response";
+import { IStatisticUserResponse} from "../../interface/response";
 import service from "../../service";
 import AppToast from "../../utils/AppToast";
 

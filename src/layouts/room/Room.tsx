@@ -18,7 +18,6 @@ import {
     IDistrictResponse,
     IProvinceResponse, IRoomAllQuery,
     IRoomResponse,
-    IUserResponse,
     IWardResponse
 } from "../../interface/response";
 import service from "../../service";
@@ -162,7 +161,6 @@ const Room = () =>{
                             inputProps={{'aria-label': 'search'}}
                             value={keyword}
                             onChange={(event)=>{
-                                console.log(keyword)
                                 setKeyword(event.currentTarget.value)
                             }}
                         />
@@ -256,7 +254,7 @@ const Room = () =>{
             <Box>
                 <TableRoom rooms={rooms} refresh={fetchRooms} total={rooms.length}/>
                 {
-                    rooms.length == 0?<div style={{display:"flex",justifyContent:"center",alignItems:"center",width:"100%",background:grey[100],height:400}}>
+                    rooms.length === 0?<div style={{display:"flex",justifyContent:"center",alignItems:"center",width:"100%",background:grey[100],height:400}}>
                         <Typography style={{fontWeight:600,fontSize:14}}>Không tìm thấy dữ liệu</Typography>
                     </div>:<></>
                 }

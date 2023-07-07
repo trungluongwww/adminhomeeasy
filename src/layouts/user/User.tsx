@@ -1,5 +1,4 @@
 import {
-    Avatar,
     Box, Button, FormControl,
     Grid, IconButton,
     InputBase, InputLabel, MenuItem, OutlinedInput, Pagination,
@@ -9,9 +8,8 @@ import {
     TableCell,
     TableHead,
     TableRow, Theme,
-    Typography, useTheme
+    Typography
 } from "@mui/material";
-import {ro} from "date-fns/locale";
 import {IDistrictResponse, IProvinceResponse, IUserResponse, IWardResponse} from "../../interface/response";
 import UserRowItem from "../../components/user/UserRowItem";
 import {Search} from "@mui/icons-material";
@@ -57,34 +55,10 @@ const searchIconStyle = {
 }
 
 
-const selectStyle = {
-    minWidth: '100%',
-};
-
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
-const MenuProps = {
-    PaperProps: {
-        style: {
-            maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-            width: 250,
-        },
-    },
-};
-
 const SelectStyle = {
     minWidth: '240px',
     maxWidth: '240px',
     maxHeight: '300px',
-}
-
-function getStyles(name: string, personName: string[], theme: Theme) {
-    return {
-        fontWeight:
-            personName.indexOf(name) === -1
-                ? theme.typography.fontWeightRegular
-                : theme.typography.fontWeightMedium,
-    };
 }
 
 const User = () => {

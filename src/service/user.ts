@@ -1,4 +1,4 @@
-import {ILoginPayload, IUserAllQuery} from "../interface/request";
+import { IUserAllQuery} from "../interface/request";
 import axiosClient from "./axios";
 import {IUserAllResponse} from "../interface/response";
 export default {

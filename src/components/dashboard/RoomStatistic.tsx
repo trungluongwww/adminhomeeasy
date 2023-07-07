@@ -1,6 +1,5 @@
 import {Box, Grid, LinearProgress, Typography} from "@mui/material";
 import {blue, grey} from "@mui/material/colors";
-import {styled} from "@mui/system";
 import {useEffect, useState} from "react";
 import {IStatisticRoomResponse} from "../../interface/response";
 import service from "../../service";

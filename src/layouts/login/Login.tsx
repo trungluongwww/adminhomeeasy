@@ -1,6 +1,6 @@
 import './Login.scss';
 import {Grid} from '@mui/material';
-import {useEffect, useState, useContext, ChangeEventHandler} from 'react';
+import {useEffect, useState, useContext} from 'react';
 import {Navigate, useNavigate} from 'react-router-dom';
 import service from "../../service";
 import { accountData } from '../../context/DataProvider';
@@ -29,7 +29,6 @@ const Login = (props: IProps) => {
                 const token = localStorage.getItem('token')
                 if (!token) return;
                 const res = await service.auth.profile();
-                console.log("123",res)
                 if (res.status.toString().startsWith('2')) {
                     props.setLogin(true)
                     setAccount(res.data.data)
@@ -54,7 +53,6 @@ const Login = (props: IProps) => {
         }
         try {
             const res = await service.auth.login({email: loginInput.username, password: loginInput.password})
-            console.log(res)
             if (res.status.toString().startsWith('2') && res.data.data.token) {
                 localStorage.setItem('token', res.data.data.token)
                 props.setLogin(true);

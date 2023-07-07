@@ -1,6 +1,5 @@
 import axiosClient from "./axios";
 import {
-    ICommonUpsertResponse,
     IStatisticCommonTodayResponse,
     IStatisticRoomResponse,
     IStatisticUserResponse,

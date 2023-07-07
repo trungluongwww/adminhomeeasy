@@ -1,24 +1,19 @@
 import {styled} from "@mui/system";
 import {
-    Avatar,
     Box,
     Button,
-    FormControl, Grid, IconButton, ImageList, ImageListItem,
-    InputLabel,
-    MenuItem,
+ImageList, ImageListItem,
+
     Modal,
-    Select,
     TableCell,
     TableRow,
-    TextField, Typography
+   Typography
 } from "@mui/material";
-import {AvTimerSharp, Edit, Image} from "@mui/icons-material";
 import {IRoomResponse} from "../../interface/response";
 import DateTimeUtils from "../../utils/DateTimeUtils";
 import constant from "../../constant";
 import React from "react";
 import InfoIcon from "@mui/icons-material/Info";
-import {grey, red} from "@mui/material/colors";
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 import LockIcon from '@mui/icons-material/Lock';
 import ImageModal from "../image/ImageModal";
@@ -36,7 +31,6 @@ const StyledTableRow = styled(TableRow)({
         backgroundColor: "#fafafa",
 
     },
-    // hide last border
     '&:last-child td, &:last-child th': {
         border: 0,
     },
@@ -46,11 +40,6 @@ const StyledTableRow = styled(TableRow)({
     },
 });
 
-const StyledEdit = styled(Edit)({
-    '&:hover': {
-        color: "#52be74",
-    },
-})
 
 const style = {
     position: 'absolute' as 'absolute',

@@ -1,7 +1,6 @@
 import Navbar from "../../components/appbar/AppBar";
 import LeftBar from "../../components/leftbar/LeftBar";
-import {BrowserRouter as Router, Outlet, Route, Routes} from "react-router-dom";
-import DashBoard from "../dashboard/DashBoard";
+import {Outlet, } from "react-router-dom";
 import React from "react";
 
 const MainLayout = () => {

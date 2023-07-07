@@ -1,5 +1,5 @@
-import React, {useContext, useEffect, useRef, useState} from 'react';
-import {AppBar, Toolbar, Typography, Button, IconButton, Avatar} from '@mui/material';
+import React, {useContext, useState} from 'react';
+import {AppBar, Typography, Button, IconButton, Avatar} from '@mui/material';
 import {styled} from "@mui/system";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import {accountData} from "../../context/DataProvider";

@@ -18,7 +18,7 @@ import {styled} from "@mui/system";
 import {green} from "@mui/material/colors";
 import AppToast from "../../utils/AppToast";
 import constant from "../../constant";
-import {IConvenienceCreatePayload, IConvenienceUpdatePayload} from "../../interface/request";
+import {IConvenienceCreatePayload} from "../../interface/request";
 
 const TableContainerStyle = styled(TableContainer)({
     margin: 'auto',

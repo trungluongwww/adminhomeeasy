@@ -1,20 +1,15 @@
 import React, {useEffect, useState} from 'react';
 
 import {
-    Typography,
     List,
-    ListItem,
     ListItemIcon,
     ListItemText,
     ListItemButton,
-    ListItemSecondaryAction
 } from '@mui/material';
 import DashboardIcon from '@mui/icons-material/Dashboard';
-import PeopleIcon from '@mui/icons-material/People';
 import HouseIcon from '@mui/icons-material/House';
 import {styled} from '@mui/system';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
-import LocalConvenienceStoreIcon from '@mui/icons-material/LocalConvenienceStore';
 import {Link, useLocation} from "react-router-dom";
 import PersonIcon from '@mui/icons-material/Person';
 import NightShelterIcon from '@mui/icons-material/NightShelter';
@@ -62,7 +57,6 @@ const LeftBar = () => {
         }else if(currentPath.startsWith('/user')){
             setSelectedItem(ItemLeftBar.User)
         }else if(currentPath.startsWith('/')){
-            console.log("dashboard")
             setSelectedItem(ItemLeftBar.DashBoard)
         }
 
@@ -76,47 +70,47 @@ const LeftBar = () => {
             <List>
                 <ListItemButton component={Link} to={'/'} style={{position: 'relative'}}
                                 onClick={() => handleItemClick(ItemLeftBar.DashBoard)}>
-                    <ListItemIcon style={{color: selectedItem == ItemLeftBar.DashBoard ? 'white' : '#ffffffa6'}}>
+                    <ListItemIcon style={{color: selectedItem === ItemLeftBar.DashBoard ? 'white' : '#ffffffa6'}}>
                         <DashboardIcon/>
                     </ListItemIcon>
                     <ListItemText primary="Dashboard"
-                                  style={{color: selectedItem == ItemLeftBar.DashBoard ? 'white' : '#ffffffa6'}}/>
+                                  style={{color: selectedItem === ItemLeftBar.DashBoard ? 'white' : '#ffffffa6'}}/>
                     <div style={{position: 'absolute', right: 8}}>
-                        {selectedItem == ItemLeftBar.DashBoard && <KeyboardArrowRightIcon
+                        {selectedItem === ItemLeftBar.DashBoard && <KeyboardArrowRightIcon
                             style={{color: 'white'}}/>}
                     </div>
                 </ListItemButton>
                 <ListItemButton component={Link} to={'/convenience'} style={{position: 'relative'}}
                                 onClick={() => handleItemClick(ItemLeftBar.Convenience)}>
-                    <ListItemIcon style={{color: selectedItem == ItemLeftBar.Convenience ? 'white' : '#ffffffa6'}}>
+                    <ListItemIcon style={{color: selectedItem === ItemLeftBar.Convenience ? 'white' : '#ffffffa6'}}>
                         <NightShelterIcon/>
                     </ListItemIcon>
                     <ListItemText primary="Thiết lặp nội thất"
-                                  style={{color: selectedItem == ItemLeftBar.Convenience ? 'white' : '#ffffffa6'}}/>
+                                  style={{color: selectedItem === ItemLeftBar.Convenience ? 'white' : '#ffffffa6'}}/>
                     <div style={{position: 'absolute', right: 8}}>
-                        {selectedItem == ItemLeftBar.Convenience && <KeyboardArrowRightIcon style={{color: 'white'}}/>}
+                        {selectedItem === ItemLeftBar.Convenience && <KeyboardArrowRightIcon style={{color: 'white'}}/>}
                     </div>
                 </ListItemButton>
                 <ListItemButton component={Link} to={'/user'} style={{position: 'relative'}}
                                 onClick={() => handleItemClick(ItemLeftBar.User)}>
-                    <ListItemIcon style={{color: selectedItem == ItemLeftBar.User ? 'white' : '#ffffffa6'}}>
+                    <ListItemIcon style={{color: selectedItem === ItemLeftBar.User ? 'white' : '#ffffffa6'}}>
                         <PersonIcon/>
                     </ListItemIcon>
                     <ListItemText primary="Người dùng"
-                                  style={{color: selectedItem == ItemLeftBar.User ? 'white' : '#ffffffa6'}}/>
+                                  style={{color: selectedItem === ItemLeftBar.User ? 'white' : '#ffffffa6'}}/>
                     <div style={{position: 'absolute', right: 8}}>
-                        {selectedItem == ItemLeftBar.User && <KeyboardArrowRightIcon style={{color: 'white'}}/>}
+                        {selectedItem === ItemLeftBar.User && <KeyboardArrowRightIcon style={{color: 'white'}}/>}
                     </div>
                 </ListItemButton>
                 <ListItemButton component={Link} to={'/room'} style={{position: 'relative'}}
                                 onClick={() => handleItemClick(ItemLeftBar.Room)}>
-                    <ListItemIcon style={{color: selectedItem == ItemLeftBar.Room ? 'white' : '#ffffffa6'}}>
+                    <ListItemIcon style={{color: selectedItem === ItemLeftBar.Room ? 'white' : '#ffffffa6'}}>
                         <HouseIcon/>
                     </ListItemIcon>
                     <ListItemText primary="Danh sách phòng"
-                                  style={{color: selectedItem == ItemLeftBar.Room ? 'white' : '#ffffffa6'}}/>
+                                  style={{color: selectedItem === ItemLeftBar.Room ? 'white' : '#ffffffa6'}}/>
                     <div style={{position: 'absolute', right: 8}}>
-                        {selectedItem == ItemLeftBar.Room && <KeyboardArrowRightIcon
+                        {selectedItem === ItemLeftBar.Room && <KeyboardArrowRightIcon
                             style={{color: 'white'}}/>}
                     </div>
                 </ListItemButton>

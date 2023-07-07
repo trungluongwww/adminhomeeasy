@@ -1,7 +1,6 @@
 import {IRoomResponse} from "../../interface/response";
 import {styled} from "@mui/system";
 import {Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from "@mui/material";
-import RawConvenience from "../convenience/RawConvenience";
 import RowTableRoom from "./RowTableRoom";
 
 

@@ -1,4 +1,4 @@
-import {IConvenienceCreatePayload, IConvenienceUpdatePayload, ILoginPayload} from "../interface/request";
+import {IConvenienceCreatePayload, IConvenienceUpdatePayload} from "../interface/request";
 import axiosClient from "./axios";
 import {ICommonUpsertResponse, IConvenienceAllResponse} from "../interface/response";
 
