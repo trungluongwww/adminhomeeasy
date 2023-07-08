@@ -6,7 +6,7 @@ import {
 } from "../interface/response";
 
 
-export default {
+const statistic ={
     getCommon: async (): Promise<IStatisticCommonTodayResponse | Error> => {
         try {
             const res = await axiosClient.get(`/statistics`)
@@ -34,3 +34,4 @@ export default {
         }
     },
 }
+export default statistic;

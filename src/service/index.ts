@@ -4,7 +4,7 @@ import location from "./location";
 import user from "./user";
 import room from "./room";
 import statistic from "./statistic";
-export default {
+const service =  {
     auth,
     convenience,
     statistic,
@@ -12,3 +12,5 @@ export default {
     room,
     location,
 }
+
+export default service;

@@ -24,12 +24,6 @@ const MyComponent = styled('div')({
     top: 0,
 });
 
-const TurnRight = () => {
-    return <div style={{position: 'absolute', right: 8}}>
-        <KeyboardArrowRightIcon/>
-    </div>
-}
-
 enum ItemLeftBar {
     DashBoard,
     Convenience,

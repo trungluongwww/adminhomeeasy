@@ -12,7 +12,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import User from "./layouts/user/User";
 
 const App = () => {
-    const [login, setLogin] = useState(false)
+    const [, setLogin] = useState(false)
     const {account} = useContext(accountData)
     return (
         <div>

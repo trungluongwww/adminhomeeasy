@@ -1,6 +1,6 @@
 import {toast} from "react-toastify";
 
-export default function ({message, isSuccess}:{message:string|null|undefined ,isSuccess:boolean}){
+const AppToast =  ({message, isSuccess}:{message:string|null|undefined ,isSuccess:boolean}) => {
     return (
         isSuccess? toast.success(message || "Thành công", {
             position: "top-right",
@@ -24,3 +24,5 @@ export default function ({message, isSuccess}:{message:string|null|undefined ,is
             })
     )
 }
+
+export default AppToast;

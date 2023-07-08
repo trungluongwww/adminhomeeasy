@@ -2,7 +2,8 @@ import axiosClient from "./axios";
 import {ILoginPayload} from "../interface/request";
 
 
-export default {
+
+const auth =  {
     login : async (data:ILoginPayload) =>{
         return await axiosClient.post(`/auth/login`,data)
     },
@@ -11,3 +12,4 @@ export default {
     }
 }
 
+export default auth;
