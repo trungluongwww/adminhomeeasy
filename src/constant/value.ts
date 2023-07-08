@@ -52,6 +52,7 @@ const roomTypeObjects = [
         isDefault: false,
     },
 ]
+
 const value = {
     convenienceCode,
     roomStatus,
